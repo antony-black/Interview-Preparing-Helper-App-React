@@ -6,9 +6,11 @@ export default function Question({ round, showAnswer, setShowAnswer }) {
   };
   return (
     <div className={styles.questionContainer}>
-      <p>{round.question}</p>
+      <p>
+        <span>{round.id + 1}.</span> <span>{round.question}</span>
+      </p>
       <span className={styles.showAnswer} onClick={handleShowAnswer}>
-        show the answer
+        {showAnswer ? "hide the answer" : "show the answer"}
       </span>
     </div>
   );

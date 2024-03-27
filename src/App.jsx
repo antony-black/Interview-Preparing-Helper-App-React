@@ -9,6 +9,18 @@ function App() {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const round = InterviewData[activeQuestion];
+
+  const handleNextButton = () => {
+    activeQuestion < InterviewData.length - 1
+      ? setActiveQuestion(activeQuestion + 1)
+      : setActiveQuestion(0);
+  };
+
+  const handleBackButton = () => {
+    activeQuestion > 0
+      ? setActiveQuestion((prev) => prev - 1)
+      : setActiveQuestion(InterviewData.length - 1);
+  };
   return (
     <div className={styles.mainContainer}>
       <Question
@@ -22,6 +34,14 @@ function App() {
         round={round}
         showAnswer={showAnswer}
       />
+      <div className={styles.buttonContainer}>
+        <button className={styles.btn} onClick={handleBackButton}>
+          BACK
+        </button>
+        <button className={styles.btn} onClick={handleNextButton}>
+          NEXT
+        </button>
+      </div>
     </div>
   );
 }

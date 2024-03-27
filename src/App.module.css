@@ -10,3 +10,33 @@
   row-gap: 10px;
   background-color: rgba(97, 201, 130, 0.87);
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 25px;
+}
+
+.btn {
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(70, 70, 148);
+  border: 1px solid #fff;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 30px;
+}
+
+/* .btn:hover {
+  transform: translateY(2px);
+} */
+
+
+.btn:active {
+  transform: translateY(2px); 
+  /* transition: transform 0.2s ease; */
+}

@@ -1,7 +1,7 @@
 .answerContainer {
   width: 100%;
   max-width: 800px;
-  height: 100px;
+  min-height: 100px;
   background-color: lightcoral;
   border: 1px solid #000;
   border-radius: 10px;
