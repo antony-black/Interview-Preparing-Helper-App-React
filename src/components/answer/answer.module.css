@@ -1,0 +1,14 @@
+.answerContainer {
+  width: 100%;
+  max-width: 800px;
+  height: 100px;
+  background-color: lightcoral;
+  border: 1px solid #000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+ }
+ 
