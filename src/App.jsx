@@ -1,47 +1,36 @@
 import React from "react";
-import { useState } from "react";
+import ProgressBar from "./components/progressBar";
+import Header from "./components/header";
+import QuestionBlock from "./components/questionBlock";
+import ButtonsContainer from "./components/buttons";
+import Auth from "./components/auth";
+import useGlobal from "./hooks/useGlobal";
 import styles from "./App.module.css";
-import Question from "./components/question";
-import Answer from "./components/answer";
-import { InterviewData } from "./constants/interviewData";
 
 function App() {
-  const [activeQuestion, setActiveQuestion] = useState(0);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const round = InterviewData[activeQuestion];
-
-  const handleNextButton = () => {
-    activeQuestion < InterviewData.length - 1
-      ? setActiveQuestion(activeQuestion + 1)
-      : setActiveQuestion(0);
-  };
-
-  const handleBackButton = () => {
-    activeQuestion > 0
-      ? setActiveQuestion((prev) => prev - 1)
-      : setActiveQuestion(InterviewData.length - 1);
-  };
+  const { user, setUser } = useGlobal();
   return (
+    // <div className={styles.mainContainer}>
+    //   {!!user ? (
+    //     <>
+    //       <h2>Welcome, {user.name}</h2>
+    //       <button onClick={() => setUser(null)}>Logout</button>
+    //     </>
+    //   ) : (
+    //     <button onClick={() => setUser("Max")}>Login</button>
+    //   )}
+    // </div>
     <div className={styles.mainContainer}>
-      <Question
-        activeQuestion={activeQuestion}
-        round={round}
-        showAnswer={showAnswer}
-        setShowAnswer={setShowAnswer}
-      />
-      <Answer
-        activeQuestion={activeQuestion}
-        round={round}
-        showAnswer={showAnswer}
-      />
-      <div className={styles.buttonContainer}>
-        <button className={styles.btn} onClick={handleBackButton}>
-          BACK
-        </button>
-        <button className={styles.btn} onClick={handleNextButton}>
-          NEXT
-        </button>
-      </div>
+      {!!user ? (
+        <>
+          <Header />
+          <ProgressBar />
+          <QuestionBlock />
+          <ButtonsContainer />
+        </>
+      ) : (
+        <Auth />
+      )}
     </div>
   );
 }

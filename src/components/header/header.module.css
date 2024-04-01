@@ -1,0 +1,15 @@
+.nav {
+  width: 100%;
+  min-height: 60px;
+  background-color: rgb(70, 70, 148);
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .nav span {
+  display: inline-block;
+} */

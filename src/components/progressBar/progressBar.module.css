@@ -1,0 +1,17 @@
+.progressBarContainer {
+  width: 100%;
+  height: 15px;
+  max-width: 770px;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  background-color: rgb(70, 70, 148);
+  margin-top: 130px;
+}
+
+.progressBarInner {
+  height: 100%;
+  border-radius: 30px;
+  background: rgb(18, 231, 48);
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(90deg, rgb(231, 18, 181) 0%, rgb(255, 0, 81) 100%);
+}
