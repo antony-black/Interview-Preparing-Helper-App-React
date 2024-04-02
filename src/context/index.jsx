@@ -1,5 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { InterviewData } from "../constants/interviewData";
+import getProgress from "../services/progress.service";
 
 export const GlobalContext = createContext(null);
 
@@ -7,14 +9,25 @@ export default function GlobalState({ children }) {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [user, setUser] = useState(null);
   const [serchValue, setSearchValue] = useState("");
+  const [theme, setTheme] = useLocalStorage("theme", "light");
   const round = InterviewData[activeQuestion];
 
-  const getProgress = Math.round(
-    ((activeQuestion + 1) / InterviewData?.length) * 100
-  );
+  const toggleTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
 
-  const handleOnChange = () => {
-    setUser(serchValue);
+  const progress = getProgress(activeQuestion, InterviewData?.length);
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    if (!!serchValue) {
+      setUser(serchValue);
+      setSearchValue("");
+    }
+  };
+
+  const handleLogOut = () => {
+    setUser(null);
   };
 
   const handleNextButton = () => {
@@ -37,11 +50,15 @@ export default function GlobalState({ children }) {
         round,
         handleNextButton,
         handleBackButton,
-        getProgress,
+        progress,
         serchValue,
         setSearchValue,
         user,
         setUser,
+        handleLogIn,
+        handleLogOut,
+        toggleTheme,
+        theme,
       }}
     >
       {children}

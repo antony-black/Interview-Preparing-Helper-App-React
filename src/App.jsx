@@ -8,19 +8,16 @@ import useGlobal from "./hooks/useGlobal";
 import styles from "./App.module.css";
 
 function App() {
-  const { user, setUser } = useGlobal();
+  const { user, theme } = useGlobal();
+
+  const getStyles = () => {
+    return theme === "dark"
+      ? `${styles.mainContainer} ${styles.mainContainerDark}`
+      : `${styles.mainContainer}`;
+  };
+
   return (
-    // <div className={styles.mainContainer}>
-    //   {!!user ? (
-    //     <>
-    //       <h2>Welcome, {user.name}</h2>
-    //       <button onClick={() => setUser(null)}>Logout</button>
-    //     </>
-    //   ) : (
-    //     <button onClick={() => setUser("Max")}>Login</button>
-    //   )}
-    // </div>
-    <div className={styles.mainContainer}>
+    <div className={getStyles()}>
       {!!user ? (
         <>
           <Header />

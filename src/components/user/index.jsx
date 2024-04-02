@@ -1,7 +1,7 @@
 import useGlobal from "../../hooks/useGlobal";
 
 export default function User() {
-  const { user, setUser } = useGlobal();
+  const { user } = useGlobal();
   return (
     <div>
       <span>{`User name: ${user}`}</span>

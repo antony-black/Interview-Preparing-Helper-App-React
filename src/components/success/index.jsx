@@ -1,11 +1,11 @@
 import useGlobal from "../../hooks/useGlobal";
 
 export default function Success() {
-  const { getProgress } = useGlobal();
+  const { progress } = useGlobal();
 
   return (
     <div>
-      <span>{`Success: ${getProgress}%`}</span>
+      <span>{`Success: ${progress}%`}</span>
     </div>
   );
 }

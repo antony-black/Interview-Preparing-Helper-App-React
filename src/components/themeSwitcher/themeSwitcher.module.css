@@ -1,0 +1,22 @@
+.switcher {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .2rem .6rem;
+  background-color: #ccccccd2;
+  /* background-color: #fb9518d2; */
+  border: 1px solid #fff;
+  border-radius: 1.7rem;
+  color: #fff;
+  font-size: 0.7rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.switcherDark {
+  background-color: #fb9518d2;
+}
+
+.switcher:active {
+  transform: translateY(1px);
+}
