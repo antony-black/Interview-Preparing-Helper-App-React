@@ -5,18 +5,18 @@ import styles from "./modal.module.css";
 
 export default function Modal({ children }) {
   const { user } = useGlobal();
-  const modal = useRef();
+  // const modal = useRef();
 
-  useEffect(() => {
-    if (user) {
-      modal.current.showModal();
-    } else {
-      modal.current.close();
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     modal.current.showModal();
+  //   } else {
+  //     modal.current.close();
+  //   }
+  // }, [user]);
 
   return createPortal(
-    <dialog ref={modal} className={styles.modalPopup} open>
+    <dialog className={styles.modalPopup} open>
       {children}
     </dialog>,
     document.getElementById("modal")

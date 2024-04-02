@@ -16,9 +16,11 @@ function App() {
       : `${styles.mainContainer}`;
   };
 
+  // console.log(user);
+
   return (
     <div className={getStyles()}>
-      {!!user ? (
+      {user !== "" ? (
         <>
           <Header />
           <ProgressBar />

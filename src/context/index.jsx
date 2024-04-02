@@ -7,9 +7,10 @@ export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
   const [activeQuestion, setActiveQuestion] = useState(0);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const [serchValue, setSearchValue] = useState("");
   const [theme, setTheme] = useLocalStorage("theme", "light");
+  // const [name, setName] = useLocalStorage("name", "");
   const round = InterviewData[activeQuestion];
 
   const toggleTheme = () => {
@@ -21,13 +22,30 @@ export default function GlobalState({ children }) {
   const handleLogIn = (e) => {
     e.preventDefault();
     if (!!serchValue) {
+      // setName(`${serchValue}`);
+      localStorage.setItem("name", `${serchValue}`);
       setUser(serchValue);
       setSearchValue("");
     }
   };
 
+  useEffect(() => {
+    const login = () => {
+      const currentName = localStorage.getItem("name");
+      if (currentName !== "") {
+        setUser(currentName);
+      }
+      // if (name !== "") {
+      //   setUser(name);
+      // }
+    };
+
+    login();
+  }, []);
+
   const handleLogOut = () => {
-    setUser(null);
+    setUser("");
+    localStorage.setItem("name", "");
   };
 
   const handleNextButton = () => {
