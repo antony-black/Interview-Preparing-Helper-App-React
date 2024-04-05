@@ -29,6 +29,7 @@ export default function Login() {
           className={styles.inputField}
           name="email"
           type="text"
+          required
           placeholder="Enter email..."
           value={inputValue.email}
           onChange={(e) =>

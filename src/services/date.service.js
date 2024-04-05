@@ -1,17 +1,24 @@
 import { Weekdays } from "../constants/weekDays";
 
-export const date = new Date();
+export const DateService = {
+  getDateData() {
+    return new Date();
+  },
 
-export const getWeekday = () => {
-  const day = date.getDay();
-  const currentWeekday = Weekdays[day];
-  return currentWeekday;
-};
+  getWeekday() {
+    const day = DateService.getDateData().getDay();
+    const currentWeekday = Weekdays[day];
+    return currentWeekday;
+  },
 
-export const getCurrentDate = () => {
-  const currentDate = `${date.toLocaleDateString("en-us", {
-    month: "short",
-  })} ${date.getDate()}, ${getWeekday()}`;
+  getCurrentDate() {
+    const currentDate = `${DateService.getDateData().toLocaleDateString(
+      "en-us",
+      {
+        month: "short",
+      }
+    )} ${DateService.getDateData().getDate()}, ${DateService.getWeekday()}`;
 
-  return currentDate;
+    return currentDate;
+  },
 };

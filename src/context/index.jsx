@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { InterviewData } from "../constants/interviewData";
-import getProgress from "../services/progress.service";
+import { ProgressService } from "../services/progress.service";
 
 export const GlobalContext = createContext(null);
 
@@ -25,7 +25,9 @@ export default function GlobalState({ children }) {
   // const progress = getProgress(activeQuestion, InterviewData?.length);
 
   useEffect(() => {
-    setProgress(getProgress(activeQuestion, InterviewData?.length));
+    setProgress(
+      ProgressService.getProgress(activeQuestion, InterviewData?.length)
+    );
   }, [activeQuestion]);
 
   const handleNextButton = () => {

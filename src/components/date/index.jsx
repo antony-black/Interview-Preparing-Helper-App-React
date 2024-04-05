@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCurrentDate } from "../../services/date.service";
+import { DateService } from "../../services/date.service";
 import styles from "./date.module.css";
 
 export default function CurrentPeriod() {
@@ -9,7 +9,7 @@ export default function CurrentPeriod() {
   );
 
   useEffect(() => {
-    setCurrentDate(getCurrentDate());
+    setCurrentDate(DateService.getCurrentDate());
   }, []);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import useGlobal from "./hooks/useGlobal";
 import Home from "./pages/home";
 import Register from "./pages/register";
 import Login from "./pages/login";
-import ProtectedRoutes from "./services/ProtectedRoutes";
+import ProtectedRoutes from "./components/protectedRoutes";
 import styles from "./App.module.css";
 
 function App() {

@@ -7,11 +7,10 @@ import ThemeSwitcher from "../themeSwitcher";
 import styles from "./header.module.css";
 
 export default function Header() {
-  const { navigate, setInputValue, setTheme, setActiveQuestion } = useGlobal();
+  const { navigate, setTheme, setActiveQuestion } = useGlobal();
 
   const handleLogout = () => {
     localStorage.removeItem("loggedin");
-    setInputValue("");
     navigate("/login");
     setTheme("light");
     setActiveQuestion(0);

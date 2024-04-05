@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useGlobal from "../../hooks/useGlobal";
+import { ValidationService } from "../../services/validation.service";
 import styles from "../form.module.css";
 
 export default function Register() {
@@ -8,8 +9,12 @@ export default function Register() {
 
   const handleRegistration = (e) => {
     e.preventDefault();
+    if (ValidationService.isValid(inputValue)) {
+      navigate("/login");
+    } else {
+      return;
+    }
     localStorage.setItem("user", JSON.stringify(inputValue));
-    navigate("/login");
     setInputValue("");
   };
 
@@ -21,8 +26,9 @@ export default function Register() {
           className={styles.inputField}
           name="name"
           type="text"
+          required
           placeholder="Enter username..."
-          value={inputValue.name}
+          value={inputValue.name || ""}
           onChange={(e) =>
             setInputValue({ ...inputValue, [e.target.name]: e.target.value })
           }
@@ -31,8 +37,9 @@ export default function Register() {
           className={styles.inputField}
           name="email"
           type="email"
+          required
           placeholder="Enter email..."
-          value={inputValue.email}
+          value={inputValue.email || ""}
           onChange={(e) =>
             setInputValue({ ...inputValue, [e.target.name]: e.target.value })
           }
@@ -41,8 +48,9 @@ export default function Register() {
           className={styles.inputField}
           name="password"
           type="password"
+          required
           placeholder="Enter password..."
-          value={inputValue.password}
+          value={inputValue.password || ""}
           onChange={(e) =>
             setInputValue({ ...inputValue, [e.target.name]: e.target.value })
           }
