@@ -7,15 +7,19 @@ import styles from "../form.module.css";
 export default function Register() {
   const { inputValue, setInputValue, navigate } = useGlobal();
 
-  const handleRegistration = (e) => {
-    e.preventDefault();
+  const processRegistration = () => {
     if (ValidationService.isValid(inputValue)) {
       navigate("/login");
+      localStorage.setItem("user", JSON.stringify(inputValue));
+      setInputValue("");
     } else {
       return;
     }
-    localStorage.setItem("user", JSON.stringify(inputValue));
-    setInputValue("");
+  };
+
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    processRegistration();
   };
 
   return (
