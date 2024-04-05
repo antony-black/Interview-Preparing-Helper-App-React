@@ -10,6 +10,7 @@ export default function Register() {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(inputValue));
     navigate("/login");
+    setInputValue("");
   };
 
   return (

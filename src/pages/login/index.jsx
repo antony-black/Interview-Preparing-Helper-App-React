@@ -16,6 +16,7 @@ export default function Login() {
     ) {
       localStorage.setItem("loggedin", true);
       navigate("/");
+      setInputValue("");
     } else {
       alert("Email or password can be wrong. Try again, please.");
     }

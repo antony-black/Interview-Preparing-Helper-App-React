@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { InterviewData } from "../constants/interviewData";
@@ -8,6 +8,7 @@ export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
   const [activeQuestion, setActiveQuestion] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [theme, setTheme] = useLocalStorage("theme", "light");
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -21,7 +22,11 @@ export default function GlobalState({ children }) {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
-  const progress = getProgress(activeQuestion, InterviewData?.length);
+  // const progress = getProgress(activeQuestion, InterviewData?.length);
+
+  useEffect(() => {
+    setProgress(getProgress(activeQuestion, InterviewData?.length));
+  }, [activeQuestion]);
 
   const handleNextButton = () => {
     activeQuestion < InterviewData.length - 1
@@ -46,6 +51,7 @@ export default function GlobalState({ children }) {
         progress,
         toggleTheme,
         theme,
+        setTheme,
         inputValue,
         setInputValue,
         navigate,
