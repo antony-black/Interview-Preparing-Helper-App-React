@@ -1,10 +1,8 @@
-import useGlobal from "../../hooks/useGlobal";
-
 export default function User() {
-  const { user } = useGlobal();
+  const userData = JSON.parse(localStorage.getItem("user"));
   return (
     <div>
-      <span>{`User name: ${user}`}</span>
+      <span>{`User name: ${userData.name}`}</span>
     </div>
   );
 }

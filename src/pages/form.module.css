@@ -1,3 +1,18 @@
+.authContainer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 24rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  background-color: #fff;
+  z-index: 100;
+}
+
 .title {
   font-weight: 700;
   font-size: 2.5rem;
@@ -5,7 +20,7 @@
   letter-spacing: 1px;
 }
 
-.container{
+.formContainer{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +42,7 @@
   box-shadow: 2px 6px 7px lightblue;
 }
 
-.login {
+.formBtn {
   margin-top: 1.7rem;
   display: flex;
   justify-content: center;
@@ -40,6 +55,11 @@
   transition: transform 0.3s ease;
 }
 
-.login:active {
+.formBtn:active {
   transform: translateY(2px);
+}
+
+.linkLabel {
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }

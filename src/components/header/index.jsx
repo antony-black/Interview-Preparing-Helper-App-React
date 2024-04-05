@@ -7,14 +7,20 @@ import ThemeSwitcher from "../themeSwitcher";
 import styles from "./header.module.css";
 
 export default function Header() {
-  const { handleLogOut } = useGlobal();
+  const { navigate, setInputValue } = useGlobal();
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedin");
+    setInputValue("");
+    navigate("/login");
+  };
   return (
     <nav className={`${styles.nav}`}>
       <User />
       <Success />
       <CurrentPeriod />
       <div className={styles.buttonContainer}>
-        <Button style={styles.logout} onClick={handleLogOut}>
+        <Button style={styles.logout} onClick={handleLogout}>
           Log out
         </Button>
         <ThemeSwitcher />

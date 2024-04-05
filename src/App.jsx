@@ -1,14 +1,14 @@
 import React from "react";
-import ProgressBar from "./components/progressBar";
-import Header from "./components/header";
-import QuestionBlock from "./components/questionBlock";
-import ButtonsContainer from "./components/buttons";
-import Auth from "./components/auth";
+import { Routes, Route } from "react-router-dom";
 import useGlobal from "./hooks/useGlobal";
+import Home from "./pages/home";
+import Register from "./pages/register";
+import Login from "./pages/login";
+import ProtectedRoutes from "./services/ProtectedRoutes";
 import styles from "./App.module.css";
 
 function App() {
-  const { user, theme } = useGlobal();
+  const { theme } = useGlobal();
 
   const getStyles = () => {
     return theme === "dark"
@@ -16,20 +16,15 @@ function App() {
       : `${styles.mainContainer}`;
   };
 
-  // console.log(user);
-
   return (
     <div className={getStyles()}>
-      {user !== "" ? (
-        <>
-          <Header />
-          <ProgressBar />
-          <QuestionBlock />
-          <ButtonsContainer />
-        </>
-      ) : (
-        <Auth />
-      )}
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<ProtectedRoutes />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

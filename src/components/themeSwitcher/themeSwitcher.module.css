@@ -1,11 +1,11 @@
 .switcher {
+  cursor: pointer;
   margin-top: 0.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: .2rem .6rem;
   background-color: #ccccccd2;
-  /* background-color: #fb9518d2; */
   border: 1px solid #fff;
   border-radius: 1.7rem;
   color: #fff;
