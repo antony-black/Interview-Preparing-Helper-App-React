@@ -8,7 +8,8 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const userData = JSON.parse(localStorage.getItem("user"));
+    const userData = JSON.parse(localStorage.getItem(inputValue.email));
+    // const userData = JSON.parse(localStorage.getItem("user"));
     console.log(userData);
     if (
       userData.email === inputValue.email &&
@@ -21,6 +22,11 @@ export default function Login() {
       alert("Email or password can be wrong. Try again, please.");
     }
   };
+
+  const handleSwitchingToRegister = () => {
+    setInputValue(...inputValue, { name: "", email: "", password: "" });
+  };
+
   return (
     <div className={styles.authContainer}>
       <h1 className={styles.title}>LOGIN, PLEASE!</h1>
@@ -31,7 +37,7 @@ export default function Login() {
           type="text"
           required
           placeholder="Enter email..."
-          value={inputValue.email}
+          value={inputValue.email || ""}
           onChange={(e) =>
             setInputValue({ ...inputValue, [e.target.name]: e.target.value })
           }
@@ -41,7 +47,7 @@ export default function Login() {
           name="password"
           type="password"
           placeholder="Enter password..."
-          value={inputValue.password}
+          value={inputValue.password || ""}
           onChange={(e) =>
             setInputValue({ ...inputValue, [e.target.name]: e.target.value })
           }
@@ -52,7 +58,7 @@ export default function Login() {
       </form>
       <div>
         <h3 className={styles.linkLabel}>Don't have an account?</h3>
-        <Link to={"/register"}>
+        <Link to={"/register"} onClick={handleSwitchingToRegister}>
           <u>Register here</u>
         </Link>
       </div>

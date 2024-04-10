@@ -28,7 +28,8 @@
 
 .inputField {
   margin-top: 1rem;
-  min-width: 200px;
+  width: 100%;
+  max-width: 200px;
   padding: 1.4rem 2.5rem;
   border: 1px solid transparent;
   border-radius: 1.5rem;

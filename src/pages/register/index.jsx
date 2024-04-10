@@ -10,7 +10,9 @@ export default function Register() {
   const processRegistration = () => {
     if (ValidationService.isValid(inputValue)) {
       navigate("/login");
-      localStorage.setItem("user", JSON.stringify(inputValue));
+      console.log(inputValue);
+      localStorage.setItem(inputValue.email, JSON.stringify(inputValue));
+      // localStorage.setItem("user", JSON.stringify(inputValue));
       setInputValue("");
     } else {
       return;
