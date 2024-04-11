@@ -6,21 +6,37 @@ import styles from "../form.module.css";
 export default function Login() {
   const { inputValue, setInputValue, navigate } = useGlobal();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const userData = JSON.parse(localStorage.getItem(inputValue.email));
-    // const userData = JSON.parse(localStorage.getItem("user"));
-    console.log(userData);
-    if (
-      userData.email === inputValue.email &&
-      userData.password === inputValue.password
-    ) {
-      localStorage.setItem("loggedin", true);
-      navigate("/");
-      setInputValue("");
+  const handleUserExist = () => {
+    localStorage.setItem("loggedin", true);
+    navigate("/");
+    setInputValue("");
+  };
+
+  const handleUserUnexist = (data) => {
+    if (data?.email !== inputValue.email) {
+      alert("The user doesn't exist, yet");
     } else {
       alert("Email or password can be wrong. Try again, please.");
     }
+  };
+
+  const handleUserData = (data) => {
+    if (
+      data?.email === inputValue.email &&
+      data?.password === inputValue.password
+    ) {
+      handleUserExist();
+    } else {
+      handleUserUnexist(data);
+    }
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const userData = JSON.parse(localStorage.getItem(inputValue.email));
+    console.log(userData);
+
+    handleUserData(userData);
   };
 
   const handleSwitchingToRegister = () => {
