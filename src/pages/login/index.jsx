@@ -9,7 +9,6 @@ export default function Login() {
   const handleUserExist = () => {
     localStorage.setItem("loggedin", true);
     navigate("/");
-    setInputValue("");
   };
 
   const handleUserUnexist = (data) => {
@@ -33,9 +32,8 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const userData = JSON.parse(localStorage.getItem(inputValue.email));
-    console.log(userData);
 
+    const userData = JSON.parse(localStorage.getItem(inputValue.email));
     handleUserData(userData);
   };
 

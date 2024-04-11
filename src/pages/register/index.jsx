@@ -5,21 +5,24 @@ import { ValidationService } from "../../services/validation.service";
 import styles from "../form.module.css";
 
 export default function Register() {
-  const { inputValue, setInputValue, navigate } = useGlobal();
+  const { inputValue, setInputValue, navigate, setUser } = useGlobal();
+
+  const handleRegistration = () => {
+    navigate("/login");
+    setUser(inputValue);
+    localStorage.setItem(inputValue.email, JSON.stringify(inputValue));
+    setInputValue("");
+  };
 
   const processRegistration = () => {
     if (ValidationService.isValid(inputValue)) {
-      navigate("/login");
-      console.log(inputValue);
-      localStorage.setItem(inputValue.email, JSON.stringify(inputValue));
-      // localStorage.setItem("user", JSON.stringify(inputValue));
-      setInputValue("");
+      handleRegistration();
     } else {
       return;
     }
   };
 
-  const handleRegistration = (e) => {
+  const submitRegistration = (e) => {
     e.preventDefault();
     processRegistration();
   };
@@ -27,7 +30,7 @@ export default function Register() {
   return (
     <div className={styles.authContainer}>
       <h1 className={styles.title}>CREATE AN ACCAUNT</h1>
-      <form className={styles.formContainer} onSubmit={handleRegistration}>
+      <form className={styles.formContainer} onSubmit={submitRegistration}>
         <input
           className={styles.inputField}
           name="name"

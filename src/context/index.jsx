@@ -22,8 +22,6 @@ export default function GlobalState({ children }) {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
-  // const progress = getProgress(activeQuestion, InterviewData?.length);
-
   useEffect(() => {
     setProgress(
       ProgressService.getProgress(activeQuestion, InterviewData?.length)
@@ -57,6 +55,8 @@ export default function GlobalState({ children }) {
         inputValue,
         setInputValue,
         navigate,
+        user,
+        setUser,
       }}
     >
       {children}
