@@ -5,11 +5,10 @@ import { ValidationService } from "../../services/validation.service";
 import styles from "../form.module.css";
 
 export default function Register() {
-  const { inputValue, setInputValue, navigate, setUser } = useGlobal();
+  const { inputValue, setInputValue, navigate, handleChange } = useGlobal();
 
   const handleRegistration = () => {
     navigate("/login");
-    setUser(inputValue);
     localStorage.setItem(inputValue.email, JSON.stringify(inputValue));
     setInputValue("");
   };
@@ -27,6 +26,10 @@ export default function Register() {
     processRegistration();
   };
 
+  // const handleChange = (e) => {
+  //   setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  // };
+
   return (
     <div className={styles.authContainer}>
       <h1 className={styles.title}>CREATE AN ACCAUNT</h1>
@@ -38,9 +41,7 @@ export default function Register() {
           required
           placeholder="Enter username..."
           value={inputValue.name || ""}
-          onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-          }
+          onChange={handleChange}
         />
         <input
           className={styles.inputField}
@@ -49,9 +50,7 @@ export default function Register() {
           required
           placeholder="Enter email..."
           value={inputValue.email || ""}
-          onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-          }
+          onChange={handleChange}
         />
         <input
           className={styles.inputField}
@@ -60,9 +59,7 @@ export default function Register() {
           required
           placeholder="Enter password..."
           value={inputValue.password || ""}
-          onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-          }
+          onChange={handleChange}
         />
 
         <button type="submit" className={styles.formBtn}>

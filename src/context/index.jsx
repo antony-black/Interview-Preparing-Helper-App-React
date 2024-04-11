@@ -28,6 +28,10 @@ export default function GlobalState({ children }) {
     );
   }, [activeQuestion]);
 
+  const handleChange = (e) => {
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  };
+
   const handleNextButton = () => {
     activeQuestion < InterviewData.length - 1
       ? setActiveQuestion(activeQuestion + 1)
@@ -55,8 +59,7 @@ export default function GlobalState({ children }) {
         inputValue,
         setInputValue,
         navigate,
-        user,
-        setUser,
+        handleChange,
       }}
     >
       {children}

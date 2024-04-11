@@ -4,7 +4,7 @@ import useGlobal from "../../hooks/useGlobal";
 import styles from "../form.module.css";
 
 export default function Login() {
-  const { inputValue, setInputValue, navigate } = useGlobal();
+  const { inputValue, setInputValue, navigate, handleChange } = useGlobal();
 
   const handleUserExist = () => {
     localStorage.setItem("loggedin", true);
@@ -52,9 +52,7 @@ export default function Login() {
           required
           placeholder="Enter email..."
           value={inputValue.email || ""}
-          onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-          }
+          onChange={handleChange}
         />
         <input
           className={styles.inputField}
@@ -62,9 +60,7 @@ export default function Login() {
           type="password"
           placeholder="Enter password..."
           value={inputValue.password || ""}
-          onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-          }
+          onChange={handleChange}
         />
         <button type="submit" className={styles.formBtn}>
           LOGIN
