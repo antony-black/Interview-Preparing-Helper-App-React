@@ -26,10 +26,6 @@ export default function Register() {
     processRegistration();
   };
 
-  // const handleChange = (e) => {
-  //   setInputValue({ ...inputValue, [e.target.name]: e.target.value });
-  // };
-
   return (
     <div className={styles.authContainer}>
       <h1 className={styles.title}>CREATE AN ACCAUNT</h1>

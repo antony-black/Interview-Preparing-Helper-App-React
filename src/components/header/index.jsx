@@ -10,10 +10,12 @@ export default function Header() {
   const {
     navigate,
     setTheme,
+    activeQuestion,
     setActiveQuestion,
     setInputValue,
     inputValue,
-    user,
+    theme,
+    progress,
   } = useGlobal();
 
   const handleLogout = () => {
@@ -22,9 +24,10 @@ export default function Header() {
     setTheme("light");
     setActiveQuestion(0);
     setInputValue("");
-    // const userData = JSON.parse(localStorage.getItem(inputValue.email));
-    // console.log(userData);
-    // localStorage.setItem(inputValue.email, JSON.stringify(inputValue));
+    localStorage.setItem(
+      `${inputValue.email}${inputValue.password}`,
+      JSON.stringify({ currentTheme: theme, currentQuestion: activeQuestion })
+    );
   };
   return (
     <nav className={`${styles.nav}`}>

@@ -4,10 +4,37 @@ import useGlobal from "../../hooks/useGlobal";
 import styles from "../form.module.css";
 
 export default function Login() {
-  const { inputValue, setInputValue, navigate, handleChange } = useGlobal();
+  const {
+    inputValue,
+    setInputValue,
+    navigate,
+    handleChange,
+    setTheme,
+    setActiveQuestion,
+  } = useGlobal();
+  // create a state for "loggedin"
+  // useEffect(() => {
+  // const previousUserData = JSON.parse(
+  //   localStorage.getItem(`${inputValue.email}${inputValue.password}`)
+  // );
+  // console.log(previousUserData);
+  // setTheme(previousUserData.currentTheme);
+  // setProgress(previousUserData.currentProgress);
+  // },[loggedin])
 
   const handleUserExist = () => {
     localStorage.setItem("loggedin", true);
+    const previousUserData = JSON.parse(
+      localStorage.getItem(`${inputValue.email}${inputValue.password}`)
+    );
+    if (previousUserData) {
+      console.log("2", previousUserData);
+      setTheme(previousUserData.currentTheme);
+      setActiveQuestion(previousUserData.currentQuestion);
+    } else {
+      setTheme("light");
+      setActiveQuestion(0);
+    }
     navigate("/");
   };
 

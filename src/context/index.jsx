@@ -6,6 +6,16 @@ import { ProgressService } from "../services/progress.service";
 
 export const GlobalContext = createContext(null);
 
+// create a state for "loggedin"
+// useEffect(() => {
+// const previousUserData = JSON.parse(
+//   localStorage.getItem(`${inputValue.email}${inputValue.password}`)
+// );
+// console.log(previousUserData);
+// setTheme(previousUserData.currentTheme);
+// setProgress(previousUserData.currentProgress);
+// },[loggedin])
+
 export default function GlobalState({ children }) {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [progress, setProgress] = useState(0);
