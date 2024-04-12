@@ -15,7 +15,6 @@ export default function Header() {
     setInputValue,
     inputValue,
     theme,
-    progress,
   } = useGlobal();
 
   const handleLogout = () => {
