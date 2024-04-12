@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useGlobal from "../../hooks/useGlobal";
 import styles from "../form.module.css";
@@ -12,21 +12,13 @@ export default function Login() {
     setTheme,
     setActiveQuestion,
   } = useGlobal();
-  // create a state for "loggedin"
-  // useEffect(() => {
-  // const previousUserData = JSON.parse(
-  //   localStorage.getItem(`${inputValue.email}${inputValue.password}`)
-  // );
-  // console.log(previousUserData);
-  // setTheme(previousUserData.currentTheme);
-  // setProgress(previousUserData.currentProgress);
-  // },[loggedin])
 
   const handleUserExist = () => {
     localStorage.setItem("loggedin", true);
     const previousUserData = JSON.parse(
       localStorage.getItem(`${inputValue.email}${inputValue.password}`)
     );
+    console.log("1", previousUserData);
     if (previousUserData) {
       console.log("2", previousUserData);
       setTheme(previousUserData.currentTheme);
