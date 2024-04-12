@@ -18,9 +18,7 @@ export default function Login() {
     const previousUserData = JSON.parse(
       localStorage.getItem(`${inputValue.email}${inputValue.password}`)
     );
-    console.log("1", previousUserData);
     if (previousUserData) {
-      console.log("2", previousUserData);
       setTheme(previousUserData.currentTheme);
       setActiveQuestion(previousUserData.currentQuestion);
     } else {
