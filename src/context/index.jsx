@@ -10,6 +10,7 @@ export default function GlobalState({ children }) {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [progress, setProgress] = useState(0);
   const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [logIn, setLogIn] = useLocalStorage("logg", false);
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
@@ -21,6 +22,14 @@ export default function GlobalState({ children }) {
   const toggleTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
+
+  useEffect(() => {
+    localStorage.setItem("activeQuestion", activeQuestion);
+  }, [activeQuestion]);
+
+  useEffect(() => {
+    const currentQuestion = localStorage.getItem("activeQuestion");
+  }, []);
 
   useEffect(() => {
     setProgress(
@@ -60,6 +69,8 @@ export default function GlobalState({ children }) {
         setInputValue,
         navigate,
         handleChange,
+        logIn,
+        setLogIn,
       }}
     >
       {children}

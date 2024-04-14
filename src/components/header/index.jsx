@@ -15,10 +15,11 @@ export default function Header() {
     setInputValue,
     inputValue,
     theme,
+    setLogIn,
   } = useGlobal();
 
   const handleLogout = () => {
-    localStorage.removeItem("loggedin");
+    setLogIn(false);
     navigate("/login");
     setTheme("light");
     setActiveQuestion(0);
