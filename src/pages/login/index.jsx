@@ -11,12 +11,12 @@ export default function Login() {
     handleChange,
     setTheme,
     setActiveQuestion,
-    logIn,
     setLogIn,
   } = useGlobal();
 
   const handleUserExist = () => {
     setLogIn(true);
+    console.log("1", inputValue);
     const previousUserData = JSON.parse(
       localStorage.getItem(`${inputValue.email}${inputValue.password}`)
     );

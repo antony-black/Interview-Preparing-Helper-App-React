@@ -24,14 +24,6 @@ export default function GlobalState({ children }) {
   };
 
   useEffect(() => {
-    localStorage.setItem("activeQuestion", activeQuestion);
-  }, [activeQuestion]);
-
-  useEffect(() => {
-    const currentQuestion = localStorage.getItem("activeQuestion");
-  }, []);
-
-  useEffect(() => {
     setProgress(
       ProgressService.getProgress(activeQuestion, InterviewData?.length)
     );

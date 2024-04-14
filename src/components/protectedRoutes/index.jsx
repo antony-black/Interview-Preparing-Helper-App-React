@@ -4,7 +4,6 @@ import useGlobal from "../../hooks/useGlobal";
 
 const ProtectedRoutes = () => {
   const { logIn } = useGlobal();
-  console.log(logIn);
   return logIn ? <Outlet /> : <Navigate to={"/login"} />;
 };
 
