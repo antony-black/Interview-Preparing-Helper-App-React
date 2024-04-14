@@ -16,7 +16,6 @@ export default function Login() {
 
   const handleUserExist = () => {
     setLogIn(true);
-    console.log("1", inputValue);
     const previousUserData = JSON.parse(
       localStorage.getItem(`${inputValue.email}${inputValue.password}`)
     );

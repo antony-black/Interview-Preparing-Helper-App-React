@@ -24,7 +24,6 @@ export default function Header() {
     setTheme("light");
     setActiveQuestion(0);
     setInputValue("");
-    console.log("2", inputValue);
     localStorage.setItem(
       `${inputValue.email}${inputValue.password}`,
       JSON.stringify({ currentTheme: theme, currentQuestion: activeQuestion })
